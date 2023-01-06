@@ -1,0 +1,24 @@
+---
+- name: Create folder for share
+  ansible.windows.win_file:
+    path: C:\Users\Public\Desktop\Amogus
+    state: directory
+
+- name: Add SMB Share
+  ansible.windows.win_share:
+    name: Amogus
+    description: Share for first competiton
+    list: yes
+    path: C:\Users\Public\Desktop\Amogus
+    full: Administrators
+    read: Everyone
+
+- name: Copy File to SMB Share
+  ansible.windows.win_copy:
+    src: files/scoring.txt
+    dest: C:\Users\Public\Desktop\Amogus\scoring.txt
+
+- name: Copy Meme to SMB Share
+  ansible.windows.win_copy:
+    src: files/Among-Us-memes.jpg
+    dest: C:\Users\Public\Desktop\Amogus\meme.jpg

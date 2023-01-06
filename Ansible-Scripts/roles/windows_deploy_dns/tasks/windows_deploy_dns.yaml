@@ -1,0 +1,8 @@
+---
+# Set internal DNS to localhost
+- name: Set internal DNS server
+  win_dns_client:
+    adapter_names: '*'
+    dns_servers:
+    - "{{ primary_dns_server }}"
+    - "{{ secondary_dns_server }}"
